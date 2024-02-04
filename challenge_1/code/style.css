@@ -1,8 +1,11 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
+    margin: 0;
     padding: 20px;
 }
+
+/* FORM */
 
 .contact-form {
     background-color: #ffffff;
@@ -14,7 +17,8 @@ body {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    position: relative;
 }
 
 .form-group label {
@@ -23,15 +27,21 @@ body {
     font-weight: bold;
 }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"],
-.form-group input[type="url"] {
+.form-group input[type="text"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.error {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+    position: absolute;
+    bottom: -20px;
 }
 
 .submit-button {
@@ -46,4 +56,35 @@ body {
 
 .submit-button:hover {
     background-color: #0056b3;
+}
+
+
+/* DETAILS */
+
+.details-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    text-align: center;
+    color: #333;
+}
+p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.no-details {
+    text-align: center;
 }

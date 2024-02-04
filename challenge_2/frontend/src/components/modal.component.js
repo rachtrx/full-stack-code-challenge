@@ -40,14 +40,16 @@ export default function CurrencyModal({ isOpen, onClose, current }) {
         } else {
             if (finalValues.base === finalValues.counter) {
                 dispatch(setMessage("The currency pair cannot be the same currency", "error"))
+                return;
             } else if (pairExists(currencies, finalValues.base, finalValues.counter)) {
                 dispatch(setMessage("The currency pair already exists", "error"))
+                return;
             } else {
                 dispatch(addCurrency(finalValues));
-                onClose(); // Close modal after action
-                resetForm();
             }
         }
+        onClose(); // Close modal after action
+        resetForm();
     };
 
 
