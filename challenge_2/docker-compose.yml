@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3001:3001"
+    expose:
+      - 3001
+    depends_on:
+      - mysql
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_NAME=${MYSQL_DATABASE}
+      - DB_DIALECT=${DB_DIALECT}
+      - DB_POOL_MAX=${DB_POOL_MAX}
+      - DB_POOL_MIN=${DB_POOL_MIN}
+      - DB_POOL_ACQUIRE=${DB_POOL_ACQUIRE}
+      - DB_POOL_IDLE=${DB_POOL_IDLE}
+      - JWT_SECRET=${JWT_SECRET}
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+
+  mysql:
+    image: mysql:latest
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    restart: always
+
+volumes:
+  mysql-data:
